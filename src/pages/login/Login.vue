@@ -2,11 +2,15 @@
  * @Author: wanghh
  * @Date: 2022-03-31 15:27:53
  * @LastEditors: wanghh
- * @LastEditTime: 2022-03-31 15:27:53
+ * @LastEditTime: 2022-03-31 16:20:29
  * @Description: 
 -->
-<template>登录页面</template>
+<template>
+  <div>{{ mainStore.name }}</div>
+</template>
 
-<script setup></script>
+<script setup lang="ts">
+import { useMainStore } from "@/page/store/mian";
 
-<style lang="less" scoped></style>
+const mainStore = useMainStore();
+</script>
