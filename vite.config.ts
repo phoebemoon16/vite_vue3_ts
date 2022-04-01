@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-31 11:39:34
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-01 15:48:51
+ * @LastEditTime: 2022-04-01 17:35:21
  * @Description:
  */
 import { defineConfig } from "vite";
@@ -16,6 +16,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"),
       "@pages": path.resolve(__dirname, "src/pages"),
+      "@api": path.resolve(__dirname, "src/service/api"),
     },
   },
   css: {

@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-31 15:27:53
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-01 17:09:32
+ * @LastEditTime: 2022-04-01 17:35:05
  * @Description: 
 -->
 <template>
@@ -12,18 +12,15 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
+// provide inject 可以设置全局引入
+// import { inject } from "vue";
+// const api: any = inject("$api");
 import { useMainStore } from "@/store/main";
-import { onMounted } from "@vue/runtime-core";
-// import loginApi from "@/service/api/login/login";
+import loginApi from "@api/login";
 const mainStore = useMainStore();
 
 // type GreetFunction = (a: string) => void;
-
-const api: any = inject("$api");
-
-console.log(api, "api0-0-");
 function testPro() {
-  api.login({ userName: "111", passWord: 122 });
+  loginApi.login({ userName: "111", passWord: 122 });
 }
 </script>
