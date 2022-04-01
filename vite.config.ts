@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-31 11:39:34
  * @LastEditors: wanghh
- * @LastEditTime: 2022-03-31 15:34:33
+ * @LastEditTime: 2022-04-01 15:48:51
  * @Description:
  */
 import { defineConfig } from "vite";
@@ -15,12 +15,13 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
+      "@pages": path.resolve(__dirname, "src/pages"),
     },
   },
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: '@import "@/assets/style/mian.sass";',
+      sass: {
+        additionalData: '@import "@/assets/style/mian.sass"',
       },
     },
   },
