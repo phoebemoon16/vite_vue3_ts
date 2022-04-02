@@ -2,12 +2,26 @@
  * @Author: wanghh
  * @Date: 2022-04-01 16:22:33
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-01 17:11:55
+ * @LastEditTime: 2022-04-02 09:23:23
  * @Description:
  */
-let apiMoudle: any = {};
-let files: any = import.meta.globEager("./api/**/*.ts");
-// let filesGlobal = import.meta.glob("./moudle/*.ts");
+
+interface ApiModule {
+  [key: string]: Function;
+}
+
+interface ApiParams {
+  name: string;
+  length: number;
+  default: ApiModule;
+}
+interface Files {
+  [key: string]: ApiParams;
+}
+
+let apiMoudle: ApiModule = {};
+let files: Files = import.meta.globEager("./api/**/*.ts");
+
 for (const path in files) {
   Object.assign(apiMoudle, files[path].default);
 }

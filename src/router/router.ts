@@ -2,13 +2,14 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:31:41
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-01 15:41:07
+ * @LastEditTime: 2022-04-02 16:09:44
  * @Description:
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import route from "./config/index";
 
+// Array<RouteRecordRaw>
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
