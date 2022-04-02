@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:31:41
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-02 16:09:44
+ * @LastEditTime: 2022-04-02 17:35:03
  * @Description:
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
@@ -19,7 +19,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "index",
-    component: () => import("@/pages/layout/index.vue"),
+    component: () => import("@/layout/index.vue"),
     children: route,
   },
 ];
