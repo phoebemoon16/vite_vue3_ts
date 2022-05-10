@@ -2,10 +2,12 @@
  * @Author: wanghh
  * @Date: 2022-03-31 14:52:05
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-02 08:48:38
+ * @LastEditTime: 2022-05-10 11:28:35
  * @Description:
  */
 import { RouteRecordRaw } from "vue-router";
+import { useMainStoreHook } from "@/store/main";
+
 interface RouteModules {
   sort: number;
   route: RouteRecordRaw;
@@ -31,5 +33,5 @@ modules.sort((a: RouteModules, b: RouteModules) => a.sort - b.sort);
 const route = modules.map((item: RouteModules) => item.route);
 
 // console.log(modules, files, "files9090");
-
+useMainStoreHook().updateRouter(route);
 export default route;

@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:31:41
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-02 17:35:03
+ * @LastEditTime: 2022-05-10 16:12:12
  * @Description:
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
@@ -19,6 +19,9 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "index",
+    meta: {
+      title: "首页",
+    },
     component: () => import("@/layout/index.vue"),
     children: route,
   },
