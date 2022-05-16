@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-04-01 11:31:52
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-10 17:53:07
+ * @LastEditTime: 2022-05-16 14:12:30
  * @Description: 
 -->
 <template>
@@ -49,9 +49,29 @@
           v-for="(item, index) in store.multiTags"
           :key="index"
           @click="routePush(item.path)"
+          @click.right="openMenu"
+          @contextmenu.prevent
         >
-          {{ item.meta.title }}
-          <span class="icon">*</span>
+          <span v-if="!showMenu">
+            {{ item.meta.title }}
+            <span v-if="index !== 0" class="icon">×</span>
+          </span>
+          <a-dropdown v-else trigger="['contextmenu']">
+            <span>
+              {{ item.meta.title }}
+              <span v-if="index !== 0" class="icon">×</span>
+            </span>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item
+                  v-for="(item, idx) in tagsMenu"
+                  :key="idx"
+                  @click="handleMenuTags(item.type, index)"
+                  >{{ item.name }}</a-menu-item
+                >
+              </a-menu>
+            </template>
+          </a-dropdown>
         </div>
       </div>
       <div class="content">
@@ -62,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useMainStore } from "@/store/main";
 import { useRoute, useRouter } from "vue-router";
 
@@ -70,6 +90,16 @@ const store = useMainStore();
 const route = useRoute();
 const router = useRouter();
 const routes = router.options.routes;
+interface TagsObject {
+  name: string;
+  type: string;
+}
+const tagsMenu: TagsObject[] = [
+  { name: "全部删除", type: "all" },
+  { name: "只移除左侧", type: "left" },
+  { name: "只移除右侧", type: "right" },
+];
+const showMenu = ref(false);
 
 // 左侧点击菜单
 function tagOnClick(items: any) {
@@ -80,6 +110,16 @@ function tagOnClick(items: any) {
 //  点击multiple
 function routePush(path: string) {
   router.push({ path: path });
+}
+
+function openMenu() {
+  console.log("open menu", tagsMenu);
+  showMenu.value = true;
+}
+
+// 处理删除Menu事件
+function handleMenuTags(type: string, index: number) {
+  useMainStore().deleteMultiTags(type, index);
 }
 
 onMounted(() => {
@@ -142,6 +182,9 @@ main {
         padding: 0px 10px;
         margin: 0px 10px;
         cursor: pointer;
+      }
+      .icon {
+        padding-left: 5px;
       }
     }
     .content {
