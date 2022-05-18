@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-04-01 11:31:52
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-16 14:12:30
+ * @LastEditTime: 2022-05-17 17:16:05
  * @Description: 
 -->
 <template>
@@ -102,25 +102,25 @@ const tagsMenu: TagsObject[] = [
 const showMenu = ref(false);
 
 // 左侧点击菜单
-function tagOnClick(items: any) {
+const tagOnClick = (items: any) => {
   useMainStore().addMultiTags(items);
   console.log(useMainStore().multiTags, "items");
-}
+};
 
 //  点击multiple
-function routePush(path: string) {
+const routePush = (path: string) => {
   router.push({ path: path });
-}
+};
 
-function openMenu() {
+const openMenu = () => {
   console.log("open menu", tagsMenu);
   showMenu.value = true;
-}
+};
 
 // 处理删除Menu事件
-function handleMenuTags(type: string, index: number) {
+const handleMenuTags = (type: string, index: number) => {
   useMainStore().deleteMultiTags(type, index);
-}
+};
 
 onMounted(() => {
   console.log(store.router, store.multiTags, "store.multiTags");
@@ -143,7 +143,6 @@ header {
 }
 main {
   display: flex;
-  height: 100vh;
   aside {
     width: 10%;
     background-color: #dcdcdc;
@@ -188,6 +187,8 @@ main {
       }
     }
     .content {
+      height: calc(100vh - 120px);
+      overflow-y: scroll;
       text-align: center;
       background-color: #fff;
     }

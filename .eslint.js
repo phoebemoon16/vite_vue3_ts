@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-31 11:43:49
  * @LastEditors: wanghh
- * @LastEditTime: 2022-03-31 14:06:18
+ * @LastEditTime: 2022-05-18 09:26:49
  * @Description:
  */
 module.exports = {
@@ -11,6 +11,8 @@ module.exports = {
     browser: true,
     node: true,
     es2021: true,
+    // 解决单组件文件 lang="ts" 编译报错问题
+    "vue/setup-compiler-macros": true,
   },
   parser: "vue-eslint-parser",
   extends: [
