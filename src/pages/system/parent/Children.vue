@@ -2,21 +2,19 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:28:36
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-18 09:21:00
+ * @LastEditTime: 2022-05-19 09:57:41
  * @Description: 
 -->
 <script setup lang="ts">
 import Son from "./Son.vue";
 import { ref } from "vue";
+import { ParentObjType } from "../../../types/ProvideTypes";
 
-defineProps({
-  parentObj: {
-    type: Object,
-    default: () => {
-      return {};
-    },
-  },
-});
+// props的ts类型检查
+interface Props {
+  parentObj: ParentObjType;
+}
+defineProps<Props>();
 
 const msg = ref<string>("我是孩子组件的msg");
 

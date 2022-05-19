@@ -2,20 +2,20 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:27:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-18 09:24:00
+ * @LastEditTime: 2022-05-18 14:44:43
  * @Description: 
 -->
 
 <script setup lang="ts">
-import Children from "./Children.vue";
-import BroChildren from "./BroChildren.vue";
 import { ref, onMounted } from "vue";
 import { provide } from "@vue/runtime-core";
+
 import { ParentObjType } from "../../../types/ProvideTypes";
+import Children from "./Children.vue";
+import BroChildren from "./BroChildren.vue";
 
 // 获取子组件暴露出来的变量
 const children = ref<any>(null);
-const borChildren = ref<any>(null);
 
 const parentObj: ParentObjType = {
   name: "parent传过来的值",
@@ -34,9 +34,13 @@ const handleChange = (value: string) => {
   childrenValue.value = value;
 };
 
+// 处理兄弟组件的值 borChildren的值
+const borChildren = ref<any>(null);
+
 const handleEvent = () => {
   borChildren.value.handleChangeMsg("父组件通过defineExpose");
 };
+
 onMounted(() => {
   console.log(children.value.msg, "children");
   console.log(borChildren.value.msg, "borChildren");
@@ -48,7 +52,10 @@ onMounted(() => {
   <a-button @click="handleEvent">触发兄弟孩子组件的方法</a-button>
   <Children ref="children" :parentObj="parentObj" @change="handleChange" />
   <div></div>
-  <BroChildren ref="borChildren" />
+  <BroChildren ref="borChildren" title="attrs获取">
+    <div>默认插槽</div>
+    <template v-slot:footer> footer操作 </template>
+  </BroChildren>
 </template>
 
 <style lang="less" scoped></style>

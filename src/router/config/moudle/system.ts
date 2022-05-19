@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:42:49
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-17 10:21:42
+ * @LastEditTime: 2022-05-19 08:46:24
  * @Description:
  */
 export default {
@@ -30,6 +30,30 @@ export default {
           title: "父页面",
         },
         component: () => import("@/pages/system/parent/Parent.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/useFunction",
+        name: "UseFunction",
+        meta: {
+          title: "辅助函数",
+        },
+        component: () => import("@/pages/system/use/UseFunction.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/reactive",
+        name: "Reactive",
+        meta: {
+          title: "响应式对比ref",
+        },
+        component: () => import("@/pages/reactivity/Ref.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/teleport",
+        name: "Teleport",
+        meta: {
+          title: "TeleportApi",
+        },
+        component: () => import("@/pages/system/TeleportAPI.vue"), // 注意这里要带上 文件后缀.vue
       },
     ],
   },
