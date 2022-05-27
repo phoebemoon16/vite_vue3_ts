@@ -2,18 +2,19 @@
  * @Author: wanghh
  * @Date: 2022-03-31 16:20:08
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-16 14:10:19
+ * @LastEditTime: 2022-05-26 14:50:54
  * @Description:
  */
 import { defineStore } from "pinia";
 import { store } from "@/store";
 import { multiType } from "./types";
+import { RouteRecordRaw } from "vue-router";
 
 export const useMainStore = defineStore({
   id: "mian",
   state: () => ({
     name: "超级管理员",
-    router: [],
+    router: <RouteRecordRaw[]>[],
     multiTags: [
       {
         path: "/",
@@ -24,7 +25,7 @@ export const useMainStore = defineStore({
     ],
   }),
   actions: {
-    updateRouter(router: any) {
+    updateRouter(router: RouteRecordRaw[]) {
       this.router = router;
     },
     addMultiTags(items: multiType) {

@@ -2,19 +2,35 @@
  * @Author: wanghh
  * @Date: 2022-05-19 08:38:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-19 09:41:05
+ * @LastEditTime: 2022-05-27 08:50:16
  * @Description: 
 -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+import { useName } from "../../myHook/randomName";
+
+import { useLinkage } from "../../myHook/myLinkRange";
+const { ProvinceSelect, CitySelect, AreaSelect } = useLinkage();
+const formData = reactive({
+  province: null,
+  city: null,
+  area: null,
+});
 
 const open = ref<Boolean>(false);
 const handleOpen = () => {
   open.value = true;
 };
+
+const { name, setName } = useName();
 </script>
 
 <template>
+  <ProvinceSelect v-model="formData.province" clearable />
+  <CitySelect v-model="formData.city" clearable />
+  <AreaSelect v-model="formData.area" />
+  <p>{{ name }}</p>
+  <a-button @click="setName('pheobe')">setName</a-button>
   <div class="title">
     <span
       >teleport 允许我们去向组件DOM内去插入一块组件模板， to属性

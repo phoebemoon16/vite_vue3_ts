@@ -2,14 +2,14 @@
  * @Author: wanghh
  * @Date: 2022-03-31 15:59:49
  * @LastEditors: wanghh
- * @LastEditTime: 2022-04-01 16:23:43
+ * @LastEditTime: 2022-05-19 10:27:08
  * @Description:
  */
 import http from "@/service/http";
-import * as T from "./type";
+import { ILoginParams, ILoginApi } from "./type";
 
-const loginApi: T.ILoginApi = {
-  login(params: T.ILoginParams) {
+const loginApi: ILoginApi = {
+  login(params: ILoginParams) {
     return http.post("/login", params);
   },
 };

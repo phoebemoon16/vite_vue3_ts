@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-31 11:39:34
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-17 08:54:50
+ * @LastEditTime: 2022-05-27 09:33:29
  * @Description:
  */
 import Vue from "vue";
@@ -13,7 +13,7 @@ import { setupStore } from "@/store";
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 import "@/assets/style/mian.scss";
-
+import "element-plus/dist/index.css";
 // 全局引入模板;
 // import api from "@/service/index";
 

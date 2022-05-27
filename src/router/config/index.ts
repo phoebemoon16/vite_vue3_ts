@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-31 14:52:05
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-10 11:28:35
+ * @LastEditTime: 2022-05-26 14:47:59
  * @Description:
  */
 import { RouteRecordRaw } from "vue-router";
@@ -30,7 +30,7 @@ for (const path in files) {
 
 modules.sort((a: RouteModules, b: RouteModules) => a.sort - b.sort);
 
-const route = modules.map((item: RouteModules) => item.route);
+const route: RouteRecordRaw[] = modules.map((item: RouteModules) => item.route);
 
 // console.log(modules, files, "files9090");
 useMainStoreHook().updateRouter(route);
