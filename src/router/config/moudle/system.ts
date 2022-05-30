@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:42:49
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-19 08:46:24
+ * @LastEditTime: 2022-05-30 15:50:16
  * @Description:
  */
 export default {
@@ -54,6 +54,22 @@ export default {
           title: "TeleportApi",
         },
         component: () => import("@/pages/system/TeleportAPI.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/model",
+        name: "Model",
+        meta: {
+          title: "自定义组件使用Model",
+        },
+        component: () => import("@/pages/system/componentModel/index.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/slot",
+        name: "Slot",
+        meta: {
+          title: "插槽试用",
+        },
+        component: () => import("@/pages/system/slot/index.vue"), // 注意这里要带上 文件后缀.vue
       },
     ],
   },

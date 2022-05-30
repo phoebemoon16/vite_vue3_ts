@@ -17,6 +17,7 @@
     "@typescript-eslint/parser": "^5.17.0",
     "ant-design-vue": "^3.2.3",
     "axios": "^0.26.1",
+    "element-plus": "^2.2.2",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -25,7 +26,6 @@
     "pinia": "^2.0.0-rc.10",
     "prettier": "^2.6.1",
     "sass": "^1.49.10",
-    "v-contextmenu": "^2.9.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"
   },

@@ -2,11 +2,11 @@
  * @Author: wanghh
  * @Date: 2022-05-19 08:38:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-27 08:50:16
+ * @LastEditTime: 2022-05-27 17:35:27
  * @Description: 
 -->
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, watch } from "vue";
 import { useName } from "../../myHook/randomName";
 
 import { useLinkage } from "../../myHook/myLinkRange";
@@ -23,6 +23,11 @@ const handleOpen = () => {
 };
 
 const { name, setName } = useName();
+
+// 监听formData
+watch(formData, (formData, prevFormData) => {
+  console.log(formData, "formData000");
+});
 </script>
 
 <template>
