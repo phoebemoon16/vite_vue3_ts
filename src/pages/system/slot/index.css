@@ -1,0 +1,26 @@
+.singal {
+    width:0;
+    border:100px solid transparent;
+    border-bottom-color:#000;
+    border-top-color:#000;
+}
+
+.bfc {
+    background-color: bisque;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.bfc1 {
+    position: relative;
+}
+
+.active {
+    color: red;
+}
+
+.text-danger {
+    color:blue
+}
