@@ -2,11 +2,11 @@
  * @Author: wanghh
  * @Date: 2022-06-22 09:13:24
  * @LastEditors: wanghh
- * @LastEditTime: 2022-06-24 10:20:38
+ * @LastEditTime: 2022-07-06 10:49:33
  * @Description: 
 -->
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 import Compressor from "compressorjs";
 
 const fileList = ref<Array<any>>([]);
@@ -64,6 +64,19 @@ function preview() {
   link.click();
   document.body.removeChild(link); //下载完成移除元素
 }
+
+const input = ref("");
+
+onMounted(() => {
+  input.value.focus();
+});
+watchEffect(() => {
+  if (input.value) {
+    input.value.focus();
+  } else {
+    // not mounted yet, or the element was unmounted (e.g. by v-if)
+  }
+});
 </script>
 <template>
   <input type="file" id="file" accept="image/*" />
@@ -97,6 +110,11 @@ function preview() {
     href="http://10.1.100.42:99/storage/files/41/20220622/CcusJ5TUwJbw8XaADLHhYEVCbOMz3BDDVk6wyqAp.pdf"
     download="w3logo"
   >
-    <img border="0" src="/i/w3school_logo_white.gif" alt="W3School" />
+    <img border="0" alt="W3School" />
   </a>
+
+  <div>
+    ref功效
+    <input ref="input" />
+  </div>
 </template>

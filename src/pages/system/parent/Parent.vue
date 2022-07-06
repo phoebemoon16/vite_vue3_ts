@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:27:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-18 14:44:43
+ * @LastEditTime: 2022-07-06 14:12:25
  * @Description: 
 -->
 
@@ -50,7 +50,12 @@ onMounted(() => {
 <template>
   <div>父级组件哦 {{ childrenValue }}</div>
   <a-button @click="handleEvent">触发兄弟孩子组件的方法</a-button>
-  <Children ref="children" :parentObj="parentObj" @change="handleChange" />
+  <Children
+    ref="children"
+    :parentObj="parentObj"
+    :title="'test title 传递'"
+    @change="handleChange"
+  />
   <div></div>
   <BroChildren ref="borChildren" title="attrs获取">
     <div>默认插槽</div>
