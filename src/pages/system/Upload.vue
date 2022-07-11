@@ -2,18 +2,66 @@
  * @Author: wanghh
  * @Date: 2022-06-22 09:13:24
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-06 10:49:33
+ * @LastEditTime: 2022-07-11 10:36:19
  * @Description: 
 -->
 <script lang="ts" setup>
-import { ref, onMounted, watchEffect } from "vue";
+import { ref, onMounted } from "vue";
+import { getCurrentInstance } from "@vue/runtime-core";
 import Compressor from "compressorjs";
+import * as XLSX from "xlsx";
 
+const currentInstance = getCurrentInstance();
 const fileList = ref<Array<any>>([]);
+const previews = ref<any>('<table><tr><td id="sjs-A1"></td></tr></table>');
+// const previewsHTML = ref<any>("<span>preview excel</span>");
 
 function handleChangeImg(item: any, j: number) {}
 function move() {}
-
+// storage/files/41/20220707/附件.pdf
+onMounted(() => {
+  fetch("/view").then((data) => {
+    // let data2 = new Blob([data])
+    let wb = XLSX.read(data, { type: "buffer" });
+    var firstSheetName = wb.SheetNames[0];
+    //reading only first sheet data
+    var jsonData = XLSX.utils.sheet_to_json(wb.Sheets[firstSheetName]);
+    alert(JSON.stringify(jsonData));
+    //displaying the json result into HTML table
+    displayJsonToHtmlTable(jsonData);
+    // var wsname = wb.SheetNames[0];
+    // var ws = wb.Sheets[wsname];
+    // var HTML = XLSX.utils.sheet_to_html(ws);
+    // // previews.value = HTML;
+    // previews.value = `<table><tr><td id=\"sjs-A1\"></td></tr></table>`;
+    // currentInstance.ctx.$refs.previewsHTML.innerHTML = HTML;
+    console.log(wb, "workbook");
+  });
+  // readWorkbookFromRemoteFile("/view");
+});
+function displayJsonToHtmlTable(jsonData) {
+  if (jsonData.length > 0) {
+    var htmlData =
+      "<tr><th>Student Name</th><th>Address</th><th>Email ID</th><th>Age</th></tr>";
+    for (var i = 0; i < jsonData.length; i++) {
+      var row = jsonData[i];
+      htmlData +=
+        "<tr><td>" +
+        row["Student Name"] +
+        "</td><td>" +
+        row["Address"] +
+        "</td><td>" +
+        row["Email ID"] +
+        "</td><td>" +
+        row["Age"] +
+        "</td></tr>";
+    }
+    // table.innerHTML = htmlData;
+    console.log(htmlData, "htmlData");
+  } else {
+    // table.innerHTML = "There is no data in Excel";
+  }
+}
 // 1.208419  压缩后:114030
 function customRequest(obj: any) {
   console.log(obj, "00");
@@ -64,23 +112,10 @@ function preview() {
   link.click();
   document.body.removeChild(link); //下载完成移除元素
 }
-
-const input = ref("");
-
-onMounted(() => {
-  input.value.focus();
-});
-watchEffect(() => {
-  if (input.value) {
-    input.value.focus();
-  } else {
-    // not mounted yet, or the element was unmounted (e.g. by v-if)
-  }
-});
+function readWorkbookFromRemoteFile(url: string) {}
 </script>
 <template>
   <input type="file" id="file" accept="image/*" />
-  <input type="age" />
   <a-upload
     v-model="fileList"
     list-type="picture"
@@ -104,17 +139,22 @@ watchEffect(() => {
   >
 
   <a href="logo.png" download="img">图片</a>
-  <img src="@/assets/logo.png" />
 
   <a
-    href="http://10.1.100.42:99/storage/files/41/20220622/CcusJ5TUwJbw8XaADLHhYEVCbOMz3BDDVk6wyqAp.pdf"
+    href="http://10.1.100.42:99/storage/files/41/20220707/test.xlsx"
     download="w3logo"
   >
     <img border="0" alt="W3School" />
   </a>
 
   <div>
-    ref功效
-    <input ref="input" />
+    excel预览
+    <a href="http://10.1.100.42:99/storage/files/41/20220707/test.xlsx"
+      >excel点击预览</a
+    >
   </div>
+
+  <div ref="previewsHTML"></div>
+  <div v-html="previews"></div>
+  <table id="display_excel_data"></table>
 </template>

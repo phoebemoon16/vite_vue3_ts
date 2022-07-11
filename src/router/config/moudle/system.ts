@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:42:49
  * @LastEditors: wanghh
- * @LastEditTime: 2022-06-22 09:13:51
+ * @LastEditTime: 2022-07-11 08:53:49
  * @Description:
  */
 export default {
@@ -78,6 +78,14 @@ export default {
           title: "上传控件",
         },
         component: () => import("@/pages/system/Upload.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/draggable",
+        name: "Draggable",
+        meta: {
+          title: "可拖拽组件",
+        },
+        component: () => import("@/pages/system/Draggable.vue"), // 注意这里要带上 文件后缀.vue
       },
     ],
   },
