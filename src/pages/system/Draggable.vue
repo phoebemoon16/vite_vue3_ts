@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-07-11 08:44:50
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-12 15:48:00
+ * @LastEditTime: 2022-07-12 16:02:10
  * @Description:
 -->
 <script setup lang="ts">
@@ -345,7 +345,6 @@ function handleDelete(index: number) {
     height: 120px;
     padding: 0px 10px;
     text-align: left;
-    overflow-y: scroll;
     .copyDrag {
       height: 100px;
       overflow-y: scroll;
