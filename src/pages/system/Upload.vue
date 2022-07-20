@@ -2,10 +2,11 @@
  * @Author: wanghh
  * @Date: 2022-06-22 09:13:24
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-11 10:36:19
+ * @LastEditTime: 2022-07-20 11:01:59
  * @Description: 
 -->
 <script lang="ts" setup>
+import ShowHotel from "./ShowHotel.vue";
 import { ref, onMounted } from "vue";
 import { getCurrentInstance } from "@vue/runtime-core";
 import Compressor from "compressorjs";
@@ -157,4 +158,6 @@ function readWorkbookFromRemoteFile(url: string) {}
   <div ref="previewsHTML"></div>
   <div v-html="previews"></div>
   <table id="display_excel_data"></table>
+
+  <ShowHotel />
 </template>
