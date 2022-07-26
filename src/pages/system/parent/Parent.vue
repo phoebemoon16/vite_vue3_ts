@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:27:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-06 14:12:25
+ * @LastEditTime: 2022-07-26 10:51:42
  * @Description: 
 -->
 
@@ -42,6 +42,7 @@ const handleEvent = () => {
 };
 
 onMounted(() => {
+  // 通过ref获取组件的值
   console.log(children.value.msg, "children");
   console.log(borChildren.value.msg, "borChildren");
 });

@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-07-20 10:25:36
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-20 17:51:09
+ * @LastEditTime: 2022-07-21 11:02:25
  * @Description: 
 -->
 <script setup>
@@ -11,6 +11,7 @@ import {
   HeartFilled,
   CloseOutlined,
   ThunderboltFilled,
+  RightOutlined,
 } from "@ant-design/icons-vue";
 </script>
 
@@ -29,6 +30,10 @@ import {
     </header>
     <div class="content">
       <img />
+      <div class="img">
+        <div class="animation"></div>
+        <right-outlined class="icon-irght" />
+      </div>
       <p>A traveler is waiting for your confirmation</p>
       <p>with Executive Twin Room + Breakfast for $129($115+$14)</p>
       <p>The above diagram is the customizrtion details</p>
@@ -72,6 +77,33 @@ import {
     }
   }
   .content {
+    .img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon-irght {
+        color: red;
+        font-size: 20px;
+        margin-top: -96px;
+      }
+    }
+    .animation {
+      width: 100px;
+      height: 100px;
+      border-top: 3px dashed red;
+      // border-right: 1px solid red;
+      border-top-left-radius: 100%;
+      animation: myfirst 5s;
+    }
+
+    @keyframes myfirst {
+      50% {
+        margin-top: 50px;
+      }
+      100% {
+        margin-top: -50px;
+      }
+    }
   }
   .bottom {
     width: 100%;
