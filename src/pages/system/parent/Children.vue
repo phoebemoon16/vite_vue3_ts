@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:28:36
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-06 14:51:50
+ * @LastEditTime: 2022-08-11 14:30:29
  * @Description: 
 -->
 <script setup lang="ts">
@@ -35,6 +35,7 @@ const change = () => {
   emits("change", "value from children");
 };
 
+// 暴露出msg 父组件可以通过ref去接收
 defineExpose({
   msg,
 });

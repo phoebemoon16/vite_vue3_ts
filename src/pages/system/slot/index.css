@@ -2,9 +2,15 @@
     width:0;
     border:100px solid transparent;
     border-bottom-color:#000;
-    border-top-color:#000;
+    /* border-top-color:#000; */
 }
 
+.singal2 {
+    width:1px;
+    height: 1px;
+    border-color: red transparent transparent transparent;
+    border-width: 100px 100px 100px 100px;
+}
 .bfc {
     background-color: bisque;
     width: 100px;

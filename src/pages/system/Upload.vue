@@ -2,11 +2,11 @@
  * @Author: wanghh
  * @Date: 2022-06-22 09:13:24
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-20 11:01:59
+ * @LastEditTime: 2022-08-02 11:03:08
  * @Description: 
 -->
 <script lang="ts" setup>
-import ShowHotel from "./ShowHotel.vue";
+// import ShowHotel from "./ShowHotel.vue";
 import { ref, onMounted } from "vue";
 import { getCurrentInstance } from "@vue/runtime-core";
 import Compressor from "compressorjs";
@@ -116,7 +116,6 @@ function preview() {
 function readWorkbookFromRemoteFile(url: string) {}
 </script>
 <template>
-  <input type="file" id="file" accept="image/*" />
   <a-upload
     v-model="fileList"
     list-type="picture"
@@ -133,31 +132,10 @@ function readWorkbookFromRemoteFile(url: string) {}
 
   <a-button type="primary" @click="preview">查看</a-button>
   <a-button type="primary" @click="download">下载</a-button>
-  <a
-    href="http://10.1.100.42:99/storage/files/41/20220622/CcusJ5TUwJbw8XaADLHhYEVCbOMz3BDDVk6wyqAp.pdf"
-    download="file.pdf"
-    >0000</a
-  >
-
-  <a href="logo.png" download="img">图片</a>
-
-  <a
-    href="http://10.1.100.42:99/storage/files/41/20220707/test.xlsx"
-    download="w3logo"
-  >
-    <img border="0" alt="W3School" />
-  </a>
-
-  <div>
-    excel预览
-    <a href="http://10.1.100.42:99/storage/files/41/20220707/test.xlsx"
-      >excel点击预览</a
-    >
-  </div>
 
   <div ref="previewsHTML"></div>
   <div v-html="previews"></div>
   <table id="display_excel_data"></table>
 
-  <ShowHotel />
+  <!-- <ShowHotel /> -->
 </template>

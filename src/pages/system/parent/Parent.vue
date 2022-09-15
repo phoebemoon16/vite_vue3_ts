@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:27:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-26 10:51:42
+ * @LastEditTime: 2022-08-11 11:43:15
  * @Description: 
 -->
 
@@ -18,14 +18,15 @@ import BroChildren from "./BroChildren.vue";
 const children = ref<any>(null);
 
 const parentObj: ParentObjType = {
-  name: "parent传过来的值",
+  name: "我是从父组件传过去的值",
 };
 
 const parentObj2: ParentObjType = {
-  name: "parent传过来的值222",
+  name: "我是从父组件传过去的对象2",
 };
 
 let childrenValue = ref<string>("00");
+
 provide("parent", parentObj);
 provide("parent2", parentObj2);
 

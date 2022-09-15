@@ -29,6 +29,7 @@ const doundCount = computed(() => {
   slot学习
   <span>行内元素的水平居中</span>
   <div class="singal"></div>
+  <div class="singal2"></div>
   <layout>
     <template v-slot:header>
       <h1>Here might be a page title</h1>
