@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:27:06
  * @LastEditors: wanghh
- * @LastEditTime: 2023-11-03 10:09:58
+ * @LastEditTime: 2023-11-03 17:41:30
  * @Description: 
 -->
 
@@ -73,12 +73,19 @@ onMounted(() => {
     "直接通过ref获取到子组件expose出来的值--BroChildren"
   );
 });
+
+const open = () => {
+  console.log("open open function parent");
+};
 </script>
 
 <template>
-  <div>父级组件哦 {{ childrenValue }}</div>
+  <div class="large">父级组件哦 {{ childrenValue }}</div>
   <a-button @click="handleEvent">触发兄弟孩子组件的方法</a-button>
   <Children
+    class="large"
+    @click="open"
+    style="font-size: 18px; color: green"
     ref="childrenRef"
     :parentObj="parentObj"
     :title="'test title 传递'"
@@ -91,4 +98,8 @@ onMounted(() => {
   </BroChildren>
 </template>
 
-<style lang="less" scoped></style>
+<style scoped>
+.large {
+  color: red;
+}
+</style>

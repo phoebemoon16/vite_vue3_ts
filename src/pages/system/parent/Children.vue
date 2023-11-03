@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:28:36
  * @LastEditors: wanghh
- * @LastEditTime: 2023-11-03 10:00:41
+ * @LastEditTime: 2023-11-03 17:41:38
  * @Description: 
 -->
 <script setup lang="ts">
@@ -37,6 +37,9 @@ const emits = defineEmits<{
 const change = () => {
   emits("change", "我是从子组件传来替换父组件的value");
 };
+const open = () => {
+  console.log("open open function children");
+};
 
 // 暴露出msg 父组件可以通过ref去接收
 defineExpose({
@@ -46,11 +49,16 @@ defineExpose({
 </script>
 
 <template>
-  <div>
+  <div v-bind="$attrs">
     孩子组件哦:{{ parentObj.name }} {{ title }} --- tans by father
     <a-button type="primary" @click="change">像父组件去触发</a-button>
   </div>
+  <a-button v-bind="$attrs">open</a-button>
   <Son />
 </template>
 
-<style lang="less" scoped></style>
+<style scoped>
+.large {
+  color: blue;
+}
+</style>
