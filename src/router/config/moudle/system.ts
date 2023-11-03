@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-03-30 15:42:49
  * @LastEditors: wanghh
- * @LastEditTime: 2022-07-11 08:53:49
+ * @LastEditTime: 2022-09-29 10:09:33
  * @Description:
  */
 export default {
@@ -86,6 +86,14 @@ export default {
           title: "可拖拽组件",
         },
         component: () => import("@/pages/system/Draggable.vue"), // 注意这里要带上 文件后缀.vue
+      },
+      {
+        path: "/effect",
+        name: "Effect",
+        meta: {
+          title: "副作用",
+        },
+        component: () => import("@/pages/system/Effect.vue"), // 注意这里要带上 文件后缀.vue
       },
     ],
   },

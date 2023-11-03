@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-17 09:28:36
  * @LastEditors: wanghh
- * @LastEditTime: 2022-08-11 14:30:29
+ * @LastEditTime: 2023-11-03 10:00:41
  * @Description: 
 -->
 <script setup lang="ts">
@@ -14,8 +14,11 @@ import { ParentObjType } from "../../../types/ProvideTypes";
 interface Props {
   parentObj: ParentObjType;
   title: string;
+  value: [];
 }
 defineProps<Props>();
+
+// type GreetFunction<> = (a: void) => Array;
 
 // js用法
 /*
@@ -25,19 +28,20 @@ defineProps({
 })
 */
 const msg = ref<string>("我是孩子组件的msg");
-
-//defineEmits 类型定义
+const msgModal = ref<string>("通过MOdal的InstanceType调用获取到的msg");
+//defineEmits 类型定义 吧msg传递过去
 const emits = defineEmits<{
-  (e: "change", daya: string): void;
+  (e: "change", value: string): void;
 }>();
 
 const change = () => {
-  emits("change", "value from children");
+  emits("change", "我是从子组件传来替换父组件的value");
 };
 
 // 暴露出msg 父组件可以通过ref去接收
 defineExpose({
   msg,
+  msgModal,
 });
 </script>
 

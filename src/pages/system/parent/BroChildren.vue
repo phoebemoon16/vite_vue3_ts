@@ -2,7 +2,7 @@
  * @Author: wanghh
  * @Date: 2022-05-18 09:10:36
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-19 10:20:45
+ * @LastEditTime: 2023-11-03 10:12:38
  * @Description: 
 -->
 <script setup lang="ts">
@@ -17,7 +17,7 @@ const slots = useSlots();
 
 console.log(attrs, "attrs");
 
-const msg = ref<string>("我是兄弟孩子组件的msg");
+const msg = ref<string>("我是第二个兄弟孩子组件的msg");
 
 const handleChangeMsg = (v: string) => {
   msg.value = v;
@@ -47,7 +47,7 @@ defineExpose({
   我是兄弟孩子组件哦 ==> {{ msg }}
   <slot></slot>
   <slot name="footer"></slot>
-  <a-button @click="handleAdd"> 修改监听的值 </a-button>
+  <a-button @click="handleAdd"> 修改监听的值 {{ number2 }}</a-button>
 </template>
 
 <style lang="less" scoped></style>
