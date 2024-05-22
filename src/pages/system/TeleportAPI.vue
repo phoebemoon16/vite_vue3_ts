@@ -2,11 +2,11 @@
  * @Author: wanghh
  * @Date: 2022-05-19 08:38:06
  * @LastEditors: wanghh
- * @LastEditTime: 2022-05-27 17:35:27
+ * @LastEditTime: 2023-11-10 16:05:12
  * @Description: 
 -->
 <script setup lang="ts">
-import { ref, reactive, watch } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import { useName } from "../../myHook/randomName";
 
 import { useLinkage } from "../../myHook/myLinkRange";
@@ -22,11 +22,26 @@ const handleOpen = () => {
   open.value = true;
 };
 
+const array = reactive([15, 16, 17, 18, 19]);
 const { name, setName } = useName();
 
 // 监听formData
 watch(formData, (formData, prevFormData) => {
   console.log(formData, "formData000");
+});
+
+onMounted(() => {
+  console.log("学习array reduce方法");
+  // reduce有初始值，就从0开始
+  array.reduce((acc, cur, index) => {
+    console.log(acc, cur, index, "have initValue");
+    return acc + cur;
+  }, 10);
+  // reduce无初始值，就从1开始
+  array.reduce((acc, cur, index) => {
+    console.log(acc, cur, index, "have no value");
+    return acc + cur;
+  });
 });
 </script>
 

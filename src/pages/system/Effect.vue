@@ -2,11 +2,15 @@
  * @Author: wanghh
  * @Date: 2022-09-29 09:56:43
  * @LastEditors: wanghh
- * @LastEditTime: 2022-09-29 14:50:11
+ * @LastEditTime: 2024-05-22 15:13:10
  * @Description: 监听和副作用监听 watch EffectWatch
 -->
 <script setup lang="ts">
 import { ref, reactive, watch, watchEffect } from "vue";
+import { useMouse } from "./hook/mouse.js";
+
+const { x, y } = useMouse();
+
 const count = ref<number>(1);
 const handleAdd = () => {
   count.value = count.value + 1;
@@ -45,6 +49,8 @@ watchEffect(() => console.log("watchEffect:", person));
 
 <template>
   <div>搞清楚监听之间的区别{{ count }}</div>
+  <!-- hook返回的x y本身就是带响应式的 -->
+  <p>Mouse position is at: {{ x }}, {{ y }}</p>
   <a-button @click="handleAdd">add</a-button>
   <div>{{ countChange }}</div>
   <!-- 注意要使用v-model:value 否则v-model不生效 -->
